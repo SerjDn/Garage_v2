@@ -33,6 +33,6 @@ public class CarRepositoryImp implements CarRepository {
 
     @Override
     public List<Car> getCars() {
-        return jdbcTemplate.query("SELECT * FROM public.car", new CarMapper());
+        return jdbcTemplate.query("SELECT * FROM public.car ORDER BY id ASC", new CarMapper());
     }
 }

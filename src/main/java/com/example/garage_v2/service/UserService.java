@@ -1,7 +1,7 @@
 package com.example.garage_v2.service;
 
 import com.example.garage_v2.model.User;
-import com.example.garage_v2.model.UserCars;
+import com.example.garage_v2.model.UserGarage;
 import com.example.garage_v2.repository.dao.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +16,11 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<UserCars> getUser(int id) {
+    public List<UserGarage> getUser(int id) {
         return this.userRepository.getUser(id);
     }
 
-    public List<UserCars> getUsers() {
+    public List<UserGarage> getUsers() {
         return this.userRepository.getUsers();
     }
 

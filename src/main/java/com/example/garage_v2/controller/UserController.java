@@ -1,7 +1,7 @@
 package com.example.garage_v2.controller;
 
 import com.example.garage_v2.model.User;
-import com.example.garage_v2.model.UserCars;
+import com.example.garage_v2.model.UserGarage;
 import com.example.garage_v2.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +18,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public List<UserCars> getUser(@PathVariable int id) {
+    public List<UserGarage> getUser(@PathVariable int id) {
         return this.userService.getUser(id);
     }
 
     @GetMapping
-    public List<UserCars> getUsers() {
+    public List<UserGarage> getUsers() {
         return this.userService.getUsers();
     }
 
