@@ -18,42 +18,49 @@ public class UserRepositoryImp implements UserRepository {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    private static final String selectUser = """
+            SELECT * FROM public.user as t1
+                FULL JOIN public.car as t2
+                ON t1.id = t2.userid
+                WHERE t1.id =
+            """;
+
+    private static final String selectUsers = """
+            SELECT * FROM public.user as t1
+                LEFT JOIN public.car as t2
+                ON t1.id = t2.userid
+                ORDER BY t1.id ASC, t2.brand ASC, t2.model ASC
+            """;
+
+    private static final String insertUser = """
+            INSERT INTO public.user(
+                name)
+                VALUES (?)
+            """;
+
+    private static final String updateUserCar = """
+            UPDATE public.car
+                SET userid = (?)
+                WHERE id = (?)
+            """;
+
     @Override
     public List<UserGarage> getUser(int id) {
-        return jdbcTemplate.query("""
-                SELECT * FROM public.user as t1
-                	FULL JOIN public.car as t2
-                	ON t1.id = t2.userid
-                	WHERE t1.id =""" + id + """
-                    ORDER BY t2.brand ASC, t2.model ASC;
-                """, new UserGarageMapper());
+        return jdbcTemplate.query(selectUser + id, new UserGarageMapper());
     }
 
     @Override
     public List<UserGarage> getUsers() {
-        return jdbcTemplate.query("""
-                SELECT * FROM public.user as t1
-                	FULL JOIN public.car as t2
-                	ON t1.id = t2.userid
-                	ORDER BY t1.id ASC, t2.brand ASC, t2.model ASC;
-                """, new UserGarageMapper());
+        return jdbcTemplate.query(selectUsers, new UserGarageMapper());
     }
 
     @Override
     public void addUser(User user) {
-        jdbcTemplate.update("""
-                INSERT INTO public.user(
-                   	name)
-                   	VALUES (?);
-                """, user.getName());
+        jdbcTemplate.update(insertUser, user.getName());
     }
 
     @Override
     public void AddCarToUser(int userId, int carId) {
-        jdbcTemplate.update("""
-                UPDATE public.car
-                   	SET userid = (?)
-                   	WHERE id IN (?);
-                """, userId, carId);
+        jdbcTemplate.update(updateUserCar, userId, carId);
     }
 }
