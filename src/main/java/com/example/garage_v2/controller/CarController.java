@@ -5,6 +5,7 @@ import com.example.garage_v2.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cars")
@@ -17,7 +18,7 @@ public class CarController {
     }
 
     @GetMapping("/{id}")
-    public Car getCar(@PathVariable int id) {
+    public Optional<Car> getCar(@PathVariable int id) {
         return this.carService.getCar(id);
     }
 
