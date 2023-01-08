@@ -8,10 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Repository
-public interface CarRepo extends CrudRepository<Car, Integer> {
+public interface CarRepository extends CrudRepository<Car, Integer> {
 
     @Override
     List<Car> findAll();
@@ -21,6 +20,7 @@ public interface CarRepo extends CrudRepository<Car, Integer> {
            UPDATE public.car
                 SET userid = (:userId)
                 WHERE id = (:carId)
+           ;
            """)
     void updateUserCar(@Param("userId") int userId, @Param("carId") int carId);
 }

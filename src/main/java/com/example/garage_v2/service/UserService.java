@@ -2,9 +2,9 @@ package com.example.garage_v2.service;
 
 import com.example.garage_v2.model.User;
 import com.example.garage_v2.model.UserGarage;
-import com.example.garage_v2.repository.CarRepo;
-import com.example.garage_v2.repository.UserGarageRepo;
-import com.example.garage_v2.repository.UserRepo;
+import com.example.garage_v2.repository.CarRepository;
+import com.example.garage_v2.repository.UserGarageRepository;
+import com.example.garage_v2.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,32 +12,29 @@ import java.util.List;
 @Service
 public class UserService {
 
-    private final UserRepo userRepo;
-    private final UserGarageRepo userGarageRepo;
-    private final CarRepo carRepo;
+    private final UserRepository userRepository;
+    private final UserGarageRepository userGarageRepository;
+    private final CarRepository carRepository;
 
-    public UserService(UserRepo userRepo, UserGarageRepo userGarageRepo, CarRepo carRepo) {
-        this.userRepo = userRepo;
-        this.userGarageRepo = userGarageRepo;
-        this.carRepo = carRepo;
+    public UserService(UserRepository userRepository, UserGarageRepository userGarageRepository, CarRepository carRepository) {
+        this.userRepository = userRepository;
+        this.userGarageRepository = userGarageRepository;
+        this.carRepository = carRepository;
     }
 
     public void addUser(User user) {
-        this.userRepo.save(user);
+        this.userRepository.save(user);
     }
 
     public List<UserGarage> getUser(int id) {
-        return this.userGarageRepo.findUserGarageByUserId(id);
+        return this.userGarageRepository.findUserGarageByUserId(id);
     }
 
     public List<UserGarage> getUsers() {
-        return this.userGarageRepo.findAllUserGarages();
+        return this.userGarageRepository.findAllUserGarages();
     }
 
-    public void AddCarToUser(int userId, int carId) {
-        this.carRepo.updateUserCar(userId, carId);
+    public void addCarToUser(int userId, int carId) {
+        this.carRepository.updateUserCar(userId, carId);
     }
-    //TODO: 08.01.2023  rename AddCarToUser to addCarToUser
-    //TODO: 08.01.2023  rename all Repo to Repository
-    //TODO: 08.01.2023  delete all old Repositories
 }

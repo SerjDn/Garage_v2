@@ -9,14 +9,15 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserGarageRepo extends CrudRepository<UserGarage, Integer> {
+public interface UserGarageRepository extends CrudRepository<UserGarage, Integer> {
 
     @Query("""
             SELECT * FROM public.user as t1
                 FULL JOIN public.car as t2
                 ON t1.id = t2.userid
                 WHERE t1.id = (:id)
-                ORDER BY t2.brand ASC, t2.model ASC
+                ORDER BY t2.brand, t2.model
+            ;
             """)
     List<UserGarage> findUserGarageByUserId(@Param("id") int id);
 
@@ -24,7 +25,8 @@ public interface UserGarageRepo extends CrudRepository<UserGarage, Integer> {
            SELECT * FROM public.user as t1
                 LEFT JOIN public.car as t2
                 ON t1.id = t2.userid
-                ORDER BY t1.id ASC, t2.brand ASC, t2.model ASC
+                ORDER BY t1.id, t2.brand, t2.model
+           ;
            """)
     List<UserGarage> findAllUserGarages();
 }
