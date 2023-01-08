@@ -28,8 +28,8 @@ public class UserController {
     }
 
     @PostMapping
-    public void addUser(@RequestBody User user) {
-        this.userService.addUser(user);
+    public User addUser(@RequestBody User user) {
+        return this.userService.addUser(user);
     }
 
     @PostMapping("/{userId}/{carId}")

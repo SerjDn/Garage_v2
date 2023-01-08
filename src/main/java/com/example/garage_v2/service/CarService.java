@@ -16,8 +16,8 @@ public class CarService {
         this.carRepository = carRepository;
     }
 
-    public void addCar(Car car) {
-        this.carRepository.save(car);
+    public Car addCar(Car car) {
+        return this.carRepository.save(car);
     }
 
     public Optional<Car> getCar(int id) {

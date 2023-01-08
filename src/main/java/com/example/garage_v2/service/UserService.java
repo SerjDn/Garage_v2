@@ -22,8 +22,8 @@ public class UserService {
         this.carRepository = carRepository;
     }
 
-    public void addUser(User user) {
-        this.userRepository.save(user);
+    public User addUser(User user) {
+        return this.userRepository.save(user);
     }
 
     public List<UserGarage> getUser(int id) {
