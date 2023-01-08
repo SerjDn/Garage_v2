@@ -28,7 +28,7 @@ public class CarController {
     }
 
     @PostMapping
-    public void addCar(@RequestBody Car car) {
-        this.carService.addCar(car);
+    public Car addCar(@RequestBody Car car) {
+        return this.carService.addCar(car);
     }
 }
