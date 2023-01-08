@@ -1,10 +1,11 @@
 package com.example.garage_v2.service;
 
 import com.example.garage_v2.model.Car;
-import com.example.garage_v2.repository.dao.CarRepository;
+import com.example.garage_v2.repository.CarRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CarService {
@@ -16,14 +17,14 @@ public class CarService {
     }
 
     public void addCar(Car car) {
-        this.carRepository.addCar(car);
+        this.carRepository.save(car);
     }
 
-    public Car getCar(int id) {
-        return this.carRepository.getCar(id);
+    public Optional<Car> getCar(int id) {
+        return this.carRepository.findById(id);
     }
 
     public List<Car> getCars() {
-        return this.carRepository.getCars();
+        return this.carRepository.findAll();
     }
 }

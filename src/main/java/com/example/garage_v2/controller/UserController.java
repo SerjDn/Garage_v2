@@ -33,7 +33,7 @@ public class UserController {
     }
 
     @PostMapping("/{userId}/{carId}")
-    public void AddCarToUser(@PathVariable int userId, @PathVariable int carId) {
-        this.userService.AddCarToUser(userId, carId);
+    public void addCarToUser(@PathVariable int userId, @PathVariable int carId) {
+        this.userService.addCarToUser(userId, carId);
     }
 }
