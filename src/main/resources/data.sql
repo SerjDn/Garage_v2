@@ -11,6 +11,12 @@ INSERT INTO "car"(
     brand, model)
 VALUES ('Nissan', 'Skyline');
 
+INSERT INTO "car"(
+    brand, model, userid)
+VALUES ('Nissan', '350Z', 1);
+
+--**************************************************
+
 CREATE TABLE "user"
 (
     id integer NOT NULL AUTO_INCREMENT,
@@ -20,4 +26,4 @@ CREATE TABLE "user"
 
 INSERT INTO "user"(
     name)
-VALUES ('John');
+VALUES ('John'), ('Mike');
