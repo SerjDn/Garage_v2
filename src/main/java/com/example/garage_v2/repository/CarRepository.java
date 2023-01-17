@@ -17,7 +17,7 @@ public interface CarRepository extends CrudRepository<Car, Integer> {
 
     @Modifying
     @Query("""
-           UPDATE public.car
+           UPDATE "car"
                 SET userid = (:userId)
                 WHERE id = (:carId)
            ;
