@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS "user"
+(
+    id integer NOT NULL GENERATED ALWAYS AS IDENTITY,
+    name text NOT NULL,
+    PRIMARY KEY (id)
+);
