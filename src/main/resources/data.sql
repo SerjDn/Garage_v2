@@ -1,4 +1,8 @@
-CREATE TABLE "car"
+--**************************************************
+--These are scripts for H2 database
+--**************************************************
+
+CREATE TABLE IF NOT EXISTS "car"
 (
     id integer NOT NULL AUTO_INCREMENT,
     brand text NOT NULL,
@@ -9,15 +13,15 @@ CREATE TABLE "car"
 
 INSERT INTO "car"(
     brand, model)
-VALUES ('Nissan', 'Skyline');
+VALUES ('Audi', 'A3');
 
 INSERT INTO "car"(
     brand, model, userid)
-VALUES ('Nissan', '350Z', 1);
+VALUES ('Audi', 'Q5', 1);
 
 --**************************************************
 
-CREATE TABLE "user"
+CREATE TABLE IF NOT EXISTS "user"
 (
     id integer NOT NULL AUTO_INCREMENT,
     name text NOT NULL,
@@ -26,4 +30,4 @@ CREATE TABLE "user"
 
 INSERT INTO "user"(
     name)
-VALUES ('John'), ('Mike');
+VALUES ('Carl'), ('Arnold');
