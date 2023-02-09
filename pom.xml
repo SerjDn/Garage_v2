@@ -87,7 +87,7 @@
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-security -->
 		<!-- added for homework25, Spring security -->
-		<!-- for this homework I added classes: Auth, AuthRepository, WebSecurityConfig, CustomUserDetails, CustomUserDetailsService -->
+		<!-- for this homework I added classes: Auth, AuthRepository, WebSecurityConfig, CustomUserDetails, CustomUserDetailsService and V4.sql-file -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
